@@ -188,7 +188,7 @@ public class MayaToUnity : EditorWindow
             // Recuperar objeto existente
             if (parentReference != null)
             {
-                Transform tr = parentReference.transform.FindChild(mayaObject.name);
+                Transform tr = parentReference.transform.Find(mayaObject.name);
                 if (tr != null)
                     obj = tr.gameObject;
             }
@@ -329,7 +329,7 @@ public class MayaToUnity : EditorWindow
         
         //caminho dentro da hierarquia do fbx
         for (++fbxParentIndex ; fbxParentIndex < path.Count && fbx != null ; fbxParentIndex++)
-            fbx = fbx.transform.FindChild(path[fbxParentIndex].name);
+            fbx = fbx.transform.Find(path[fbxParentIndex].name);
 
         //retorno o objeto encontrado
         return fbx != null ? fbx.gameObject : null;
