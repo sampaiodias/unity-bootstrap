@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -62,7 +62,15 @@ public class UIScreenManager : Singleton<UIScreenManager>
         history.Clear();
         currentScreen = null;
     }
-    
+
+    public void HideAllOnStart()
+    {
+        foreach (UIScreen sc in screens)
+            sc.gameObject.SetActive(false);
+        history.Clear();
+        currentScreen = null;
+    }
+
     public T SetScreen<T>() where T : UIScreen
     {
         T screen = GetScreen<T>();
@@ -128,7 +136,7 @@ public class UIScreenManager : Singleton<UIScreenManager>
         screens = new List<UIScreen>(gameObject.GetComponentsInChildren<UIScreen>(true));
         history = new Stack<UIScreen>();
         
-        HideAll();
+        HideAllOnStart();
     }
 
     protected void Start()
