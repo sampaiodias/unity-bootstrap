@@ -30,7 +30,7 @@ public abstract class UIScreen : MonoBehaviour
             StartCoroutine("_HideCoroutine");
     }
 
-    public void AddScreenByName( string objName )
+    public virtual void AddScreenByName( string objName )
     {
         UIScreenManager.GetInstance().AddScreen(objName);
     }
